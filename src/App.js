@@ -5,9 +5,9 @@ import HelloWorld from './components/HelloWorld/HelloWorld';
 function App() {
     return (
         <div className='container mx-auto'>
-            <Button />
-            <Button />
-            <HelloWorld/>
+            <Button name="First Button" />
+            <Button name="Second Button" />
+            <HelloWorld text="Good Morning" />
         </div>
     );
 }
