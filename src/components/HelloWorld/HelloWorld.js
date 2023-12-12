@@ -1,12 +1,10 @@
-import { Component } from 'react';
+import { Component } from "react";
 
 class HelloWorld extends Component {
     render() {
         return (
-            <div>
-                <div>Hello World By Leela Web Dev</div>
-            </div>
-        );
+            <div>HelloWorld</div>
+        )
     }
 }
 

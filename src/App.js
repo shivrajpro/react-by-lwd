@@ -7,8 +7,7 @@ function App() {
         <div className='container mx-auto'>
             <Button />
             <Button />
-
-            <HelloWorld />
+            <HelloWorld/>
         </div>
     );
 }
