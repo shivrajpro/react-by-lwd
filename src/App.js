@@ -1,20 +1,17 @@
+import React from "react";
 import './App.css';
-import Todo from './Todo'
 
-// don't remove the export keyword here!
-export const DUMMY_TODOS = [
-    'Learn React',
-    'Practice React',
-    'Profit!'
-];
-
-// don't change the Component name "App"
 export default function App() {
+    const [highlighted, setHighlighted] = React.useState(false);
+    
+    function handleClick() {
+        setHighlighted(isHighlighted => !isHighlighted);
+    }
+    
     return (
         <div>
-            {DUMMY_TODOS.map((todo, index) => {
-                return (<Todo key={index} text={todo} />)
-            })}
+            <p className={highlighted ? 'active' : undefined}>Style me!</p>
+            <button className="bg-red-400 text-white px-5" onClick={handleClick}>Toggle style</button>
         </div>
-    )
+    );
 }
