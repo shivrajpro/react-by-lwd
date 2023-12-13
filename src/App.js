@@ -7,9 +7,9 @@ function App() {
     return (
         <div className='container mx-auto'>
             <Post/>
-            <Button name="First Button" />
+            {/* <Button name="First Button" />
             <Button name="Second Button" />
-            <HelloWorld text="Good Morning" />
+            <HelloWorld text="Good Morning" /> */}
         </div>
     );
 }
