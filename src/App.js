@@ -9,9 +9,8 @@ export default function App() {
     }
     
     return (
-        <div>
-            <p className={highlighted ? 'active' : undefined}>Style me!</p>
-            <button className="bg-red-400 text-white px-5" onClick={handleClick}>Toggle style</button>
+        <div className='container mx-auto'>
+            <h2>app works! lets start</h2>
         </div>
     );
 }
