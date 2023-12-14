@@ -1,21 +1,43 @@
 const { Component } = require("react");
 
 class AddPost extends Component {
+    state = {
+        title:'',
+        description:'',
+        status:'active'
+    }
+
+    textChange(fieldName, e){
+        this.setState({
+            [fieldName]:e.target.value
+        })
+    }
+    addPostHandler(e){
+        e.preventDefault();
+        console.log(this.state);
+    }
+
     render() {
         return <div className="px-2 py-2">
             <h2 className='text-2xl font-bold'>Add Post</h2>
-            <form className="my-2">
+            <form className="my-2" onSubmit={this.addPostHandler.bind(this)} >
                 <div>
                     <label className='block'>Title</label>
-                    <input type="text" className='px-3 py-1 block w-1/4 border border-gray-600  focus:outline-none focus:border-red-600'></input>
+                    <input value={this.state.title} 
+                    onChange={this.textChange.bind(this, 'title')}
+                    type="text" className='px-3 py-1 block w-1/4 border border-gray-600  focus:outline-none focus:border-red-600'></input>
                 </div>
                 <div>
                     <label>Description</label>
-                    <textarea type="text" className='px-3 py-1 block w-1/4 border border-gray-600  focus:outline-none focus:border-red-600'></textarea>
+                    <textarea value={this.state.description} 
+                    onChange={this.textChange.bind(this, 'description')}
+                    type="text" className='px-3 py-1 block w-1/4 border border-gray-600  focus:outline-none focus:border-red-600'></textarea>
                 </div>
                 <div>
                     <label>Status</label>
-                    <select className='px-3 py-1 block w-1/4 border border-gray-600  focus:outline-none focus:border-red-600'>
+                    <select value={this.state.status}
+                    onChange={this.textChange.bind(this, 'status')}
+                    className='px-3 py-1 block w-1/4 border border-gray-600  focus:outline-none focus:border-red-600'>
                         <option value="active">Active</option>
                         <option value="inactive">Inactive</option>
                     </select>
