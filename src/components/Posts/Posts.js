@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import AddPost from '../AddPost/AddPost';
 import SinglePost from '../SinglePost/SinglePost';
+import Dialog from '../Dialog/Dialog';
 
 class Posts extends Component {
     state = {
@@ -50,8 +51,14 @@ class Posts extends Component {
                 <SinglePost
                     title={post.title}
                     description={post.description}
-                    titleChange={this.titleChangeHandler.bind(this, post.id)}
-                />,
+                >
+                    <div>
+                        <input type='text' value={post.title}
+                            onChange={this.titleChangeHandler.bind(this, post.id)}
+                            className='px-5 py-1 rounded-xl border border-gray-500'
+                        />
+                    </div>
+                </SinglePost>
             );
         }
         return (
@@ -62,20 +69,26 @@ class Posts extends Component {
                             key={post.id}
                             title={post.title}
                             description={post.description}
-                            titleChange={this.titleChangeHandler.bind(this, post.id)}
-                        />
+                        >
+                            <div>
+                                <input type='text' value={post.title}
+                                    onChange={this.titleChangeHandler.bind(this, post.id)}
+                                    className='px-5 py-1 rounded-xl border border-gray-500'
+                                />
+                            </div>
+                        </SinglePost>
                     );
                 })}
             </div>
         );
     }
 
-    titleChangeHandler = (id, event)=>{
-        const postIndex = this.state.posts.findIndex(p=>p.id === id);
+    titleChangeHandler = (id, event) => {
+        const postIndex = this.state.posts.findIndex(p => p.id === id);
         const posts = [...this.state.posts];
 
         posts[postIndex].title = event.target.value;
-        this.setState({posts})
+        this.setState({ posts })
     }
     render() {
         return (
@@ -98,6 +111,9 @@ class Posts extends Component {
                 <div className='my-5'>
                     <AddPost />
                 </div>
+                <Dialog addPost={<AddPost/>} >
+                    <div>showing the dialog data</div>
+                </Dialog>
             </div>
         );
     }
