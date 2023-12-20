@@ -50,6 +50,7 @@ class Posts extends Component {
                 <SinglePost
                     title={post.title}
                     description={post.description}
+                    titleChange={this.titleChangeHandler.bind(this, post.id)}
                 />,
             );
         }
@@ -61,6 +62,7 @@ class Posts extends Component {
                             key={post.id}
                             title={post.title}
                             description={post.description}
+                            titleChange={this.titleChangeHandler.bind(this, post.id)}
                         />
                     );
                 })}
@@ -68,23 +70,14 @@ class Posts extends Component {
         );
     }
 
-    render() {
-        let posts = null;
+    titleChangeHandler = (id, event)=>{
+        const postIndex = this.state.posts.findIndex(p=>p.id === id);
+        const posts = [...this.state.posts];
 
-        if (this.state.showPosts) {
-            posts = (
-                <div className='flex my-3'>
-                    <SinglePost
-                        title={this.state.posts[0].title}
-                        description={this.state.posts[0].description}
-                    />
-                    <SinglePost
-                        title={this.state.posts[1].title}
-                        description={this.state.posts[1].description}
-                    />
-                </div>
-            );
-        }
+        posts[postIndex].title = event.target.value;
+        this.setState({posts})
+    }
+    render() {
         return (
             <div>
                 <div>{this.state.count && 'show Count'}</div>
