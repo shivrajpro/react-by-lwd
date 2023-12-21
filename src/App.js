@@ -1,24 +1,32 @@
 import './App.css';
-import ButtonContext from './Context/ButtonContext';
-import UserContext from './Context/UserContext';
+import Navigation from './components/Navigation/Navigation';
 import Posts from './components/Posts/Posts';
 import Sidebar from './components/Sidebar/Sidebar';
 
 function App() {
     let userData = {
-        name:'leela',
-        greet:function () {
-            return 'hello '+this.name;
+        name: 'leela',
+        greet: function () {
+            return 'hello ' + this.name;
         }
     }
     return (
         <div className='container mx-auto'>
-            <ButtonContext.Provider value="navigation context value">
-                <UserContext.Provider value={userData} >
-                    <Sidebar name="leela web dev" />
-                </UserContext.Provider>
-            </ButtonContext.Provider>
-            <Posts />
+            <div className='flex' >
+                <div className='w-1/5' >
+                    <Sidebar>
+                        <Navigation>
+                            <div>
+                                <a href='#'>leela web dev</a>
+                                <p> {userData.greet()} </p>
+                            </div>
+                        </Navigation>
+                    </Sidebar>
+                </div>
+                <div className='w-4/5' >
+                    <Posts />
+                </div>
+            </div>
         </div>
     );
 }
