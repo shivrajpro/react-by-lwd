@@ -4,29 +4,49 @@ import SinglePost from '../SinglePost/SinglePost';
 import Dialog from '../Dialog/Dialog';
 
 class Posts extends Component {
-    state = {
-        posts: [
-            {
-                id: '1',
-                title: 'post 1',
-                description: 'post1 description 1',
-            },
-            {
-                id: '2',
-                title: 'post 2',
-                description: 'post1 description 2',
-            },
-            {
-                id: '3',
-                title: 'post 3',
-                description: 'post1 description 2',
-            },
-        ],
+    constructor(props){
+        console.clear();
+        super(props);
+        this.state = {
+            posts: [
+                {
+                    id: '1',
+                    title: 'post 1',
+                    description: 'post1 description 1',
+                },
+                {
+                    id: '2',
+                    title: 'post 2',
+                    description: 'post1 description 2',
+                },
+                {
+                    id: '3',
+                    title: 'post 3',
+                    description: 'post1 description 2',
+                },
+            ],
+    
+            postTitle: 'Posts List',
+            showPosts: true,
+            count: false,
+        };
 
-        postTitle: 'Posts List',
-        showPosts: true,
-        count: false,
-    };
+        console.log('[post.js] constructor called');
+    }
+
+    static getDerivedStateFromProps(props, state){
+        console.log('[post.js] getDerivedStateFromProps called');
+        return state;
+    }
+
+    shouldComponentUpdate(nextProps, nextState){
+        //will decide whether to re render the component or not
+        return true;
+    }
+
+    componentDidMount(){
+        console.log('[post.js] component did mount called');
+    }
 
     togglePostsHandler = () => {
         this.setState({
@@ -91,6 +111,8 @@ class Posts extends Component {
         this.setState({ posts })
     }
     render() {
+        console.log('[posts.js] render called');
+
         return (
             <div>
                 <div>{this.state.count && 'show Count'}</div>
@@ -116,6 +138,15 @@ class Posts extends Component {
                 </Dialog>
             </div>
         );
+    }
+
+    getSnapshotBeforeUpdate(prevState, prevProps){
+        console.log('[posts.js] getSnapshotBeforeUpdate called');
+        return 20;
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot){
+        console.log('[posts.js] componentDidUpdate called',snapshot);
     }
 }
 
