@@ -1,15 +1,11 @@
-import { Component } from 'react';
-import ButtonContext from '../../Context/ButtonContext';
-import Navigation from '../Navigation/Navigation';
+import { Component } from "react";
+import Navigation from "../Navigation/Navigation";
 
-export default class Sidebar extends Component {
-    render() {
-        return (
-            <div>
-                <ButtonContext.Provider value='Navigation context value'>
-                    <Navigation />
-                </ButtonContext.Provider>
-            </div>
-        );
+export default class Sidebar extends Component{
+    render(){
+        return <div>
+            <Navigation name={this.props.name} />
+            <h1>In Sidebar</h1>
+        </div>
     }
 }
