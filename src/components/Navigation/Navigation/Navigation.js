@@ -1,4 +1,4 @@
-import ButtonContext from "../../Context/ButtonContext";
+import ButtonContext from "../../../Context/ButtonContext";
 
 const { Component } = require("react");
 
@@ -7,7 +7,7 @@ class Navigation extends Component {
     render() {
         return (<div>
             <h2> {this.props.name} </h2>
-            <h3> {this.btnContext} </h3>
+            <h2> {this.btnContext} </h2>
         </div>)
     }
 }

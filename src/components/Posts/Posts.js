@@ -1,11 +1,10 @@
 import { Component } from 'react';
 import AddPost from '../AddPost/AddPost';
-import SinglePost from '../SinglePost/SinglePost';
 import Dialog from '../Dialog/Dialog';
+import SinglePost from '../SinglePost/SinglePost';
 
 class Posts extends Component {
-    constructor(props){
-        console.clear();
+    constructor(props) {
         super(props);
         this.state = {
             posts: [
@@ -14,43 +13,44 @@ class Posts extends Component {
                     title: 'post 1',
                     description: 'post1 description 1',
                 },
-                {
-                    id: '2',
-                    title: 'post 2',
-                    description: 'post1 description 2',
-                },
-                {
-                    id: '3',
-                    title: 'post 3',
-                    description: 'post1 description 2',
-                },
             ],
-    
+
             postTitle: 'Posts List',
             showPosts: true,
             count: false,
         };
-
-        console.log('[post.js] constructor called');
+        console.log('[posts.js] constructor called');
     }
 
-    static getDerivedStateFromProps(props, state){
-        console.log('[post.js] getDerivedStateFromProps called');
+    static getDerivedStateFromProps(props, state) {
+        console.log('[posts.js] get derived called');
         return state;
     }
 
-    shouldComponentUpdate(nextProps, nextState){
-        //will decide whether to re render the component or not
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('[posts.js] should component update fired');
         return true;
     }
 
-    componentDidMount(){
-        console.log('[post.js] component did mount called');
+    componentDidMount() {
+        console.log('[posts.js] component did mount called');
     }
 
     togglePostsHandler = () => {
         this.setState({
             showPosts: !this.state.showPosts,
+        });
+    };
+
+    onchangeTitleHandler = (id, e) => {
+        const postIndex = this.state.posts.findIndex(
+            (post) => post.id === id,
+        );
+        const posts = [...this.state.posts];
+        posts[postIndex].title = e.target.value;
+
+        this.setState({
+            posts,
         });
     };
 
@@ -71,14 +71,11 @@ class Posts extends Component {
                 <SinglePost
                     title={post.title}
                     description={post.description}
-                >
-                    <div>
-                        <input type='text' value={post.title}
-                            onChange={this.titleChangeHandler.bind(this, post.id)}
-                            className='px-5 py-1 rounded-xl border border-gray-500'
-                        />
-                    </div>
-                </SinglePost>
+                    titleChange={this.onchangeTitleHandler.bind(
+                        this,
+                        post.id,
+                    )}
+                />,
             );
         }
         return (
@@ -88,11 +85,17 @@ class Posts extends Component {
                         <SinglePost
                             key={post.id}
                             title={post.title}
+                            addpost={<AddPost />}
                             description={post.description}
                         >
-                            <div>
-                                <input type='text' value={post.title}
-                                    onChange={this.titleChangeHandler.bind(this, post.id)}
+                            <div className='my-2'>
+                                <input
+                                    type='text'
+                                    value={post.title}
+                                    onChange={this.onchangeTitleHandler.bind(
+                                        this,
+                                        post.id,
+                                    )}
                                     className='px-5 py-1 rounded-xl border border-gray-500'
                                 />
                             </div>
@@ -103,16 +106,24 @@ class Posts extends Component {
         );
     }
 
-    titleChangeHandler = (id, event) => {
-        const postIndex = this.state.posts.findIndex(p => p.id === id);
-        const posts = [...this.state.posts];
-
-        posts[postIndex].title = event.target.value;
-        this.setState({ posts })
-    }
     render() {
         console.log('[posts.js] render called');
+        let posts = null;
 
+        // if (this.state.showPosts) {
+        //     posts = (
+        //         <div className='flex my-3'>
+        //             <SinglePost
+        //                 title={this.state.posts[0].title}
+        //                 description={this.state.posts[0].description}
+        //             />
+        //             <SinglePost
+        //                 title={this.state.posts[1].title}
+        //                 description={this.state.posts[1].description}
+        //             />
+        //         </div>
+        //     );
+        // }
         return (
             <div>
                 <div>{this.state.count && 'show Count'}</div>
@@ -130,23 +141,28 @@ class Posts extends Component {
                 <hr />
                 {this.getPosts()}
 
-                <div className='my-5'>
-                    <AddPost />
+                <div className='flex'>
+                    <div className='my-5 flex-1 w-full'>
+                        <AddPost />
+                    </div>
+
+                    <div className='flex-1'>
+                        <Dialog>
+                            <div>Showing the dialog data</div>
+                        </Dialog>
+                    </div>
                 </div>
-                <Dialog addPost={<AddPost/>} >
-                    <div>showing the dialog data</div>
-                </Dialog>
             </div>
         );
     }
 
-    getSnapshotBeforeUpdate(prevState, prevProps){
-        console.log('[posts.js] getSnapshotBeforeUpdate called');
-        return 20;
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        console.log('[posts.js] snapshot fired');
+        return null;
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot){
-        console.log('[posts.js] componentDidUpdate called',snapshot);
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('[posts.js] component did update fired');
     }
 }
 
