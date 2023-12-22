@@ -1,6 +1,6 @@
 import './App.css';
 import Cat from './components/MouseTracker/Cat';
-import MouseWithCat from './components/MouseTracker/MouseWithCat';
+import UserPropTypes from './components/UserPropTypes/UserPropTypes';
 
 function App() {
     let userData = {
@@ -10,8 +10,8 @@ function App() {
         },
     };
     return (
-        <div className='border border-gray-500 container mx-auto'>
-            <Cat />
+        <div className='p-2 border border-gray-500 container mx-auto'>
+            <UserPropTypes/>
         </div>
 /* 
         <div className='container mx-auto'>
