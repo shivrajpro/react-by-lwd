@@ -1,10 +1,7 @@
 import React, { Component } from "react";
+import { WithForwardingRef } from "./WithForwardingRef";
 
 class ForwardingRefButton extends Component{
-    constructor(props){
-        super(props);
-    }
-
     render(){
         return (
             <div className="my-3" >
@@ -16,6 +13,8 @@ class ForwardingRefButton extends Component{
     }
 }
 
-export default React.forwardRef((props, ref)=>{
-    return <ForwardingRefButton buttonRef={ref} {...props} />
-})
+export default WithForwardingRef(
+    React.forwardRef((props, ref)=>{
+        return <ForwardingRefButton buttonRef={ref} {...props} />
+    })
+)

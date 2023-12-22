@@ -1,3 +1,6 @@
 react components are pure functions
 do not mutate the state directly
 render method gets called everytime the state gets updated
+
+concepts to revisit:
+forward refs with HOC
