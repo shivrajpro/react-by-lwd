@@ -1,10 +1,6 @@
 import './App.css';
-import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
-import ParentForwardingRef from './components/ForwardingRef/ParentForwardingRef';
-import Posts from './components/Posts/Posts';
-import Sidebar from './components/Sidebar/Sidebar';
-import ButtonContext from './Context/ButtonContext';
-import UserContext from './Context/UserContext';
+import Cat from './components/MouseTracker/Cat';
+import MouseWithCat from './components/MouseTracker/MouseWithCat';
 
 function App() {
     let userData = {
@@ -14,6 +10,10 @@ function App() {
         },
     };
     return (
+        <div className='border border-gray-500 container mx-auto'>
+            <Cat />
+        </div>
+/* 
         <div className='container mx-auto'>
             <div className='flex'>
                 <div className='w-1/5'>
@@ -27,11 +27,14 @@ function App() {
                 </div>
                 <div className='w-4/5'>
                     <div>
+                        <TableFragment/>
                         <ParentForwardingRef/>
-                        {/* <CallbackRefTextInput/> */}
-                        {/* <ParentRefTextInput/> */}
-                        {/* <RefTextInput/> */}
-                        {/* <Category name="some category name" /> */}
+
+                        <CallbackRefTextInput/>
+                        <ParentRefTextInput/>
+                        <RefTextInput/>
+                        <Category name="some category name" />
+                    
                     </div>
                     <div>
                         <Posts />
@@ -39,6 +42,7 @@ function App() {
                 </div>
             </div>
         </div>
+      */   
     );
 }
 
