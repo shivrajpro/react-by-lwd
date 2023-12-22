@@ -25,7 +25,7 @@ export default class MouseTracker extends Component{
                     Mouse pointer position is X : {this.state.x}
                     and Y : {this.state.y}
                 </div>
-                <div> {this.props.render(this.state)} </div>
+                <div> {this.props.showAnimal(this.state)} </div>
             </div>
         )
     }

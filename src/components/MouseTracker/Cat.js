@@ -4,7 +4,7 @@ import MouseTracker from "./MouseTracker";
 export default class Cat extends Component {
     render() {
         return (
-            <MouseTracker render={(mouse) => {
+            <MouseTracker showAnimal={(mouse) => {
                 return <img 
                 style={{
                     position:'absolute',
