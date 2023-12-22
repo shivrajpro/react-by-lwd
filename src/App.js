@@ -1,7 +1,8 @@
 import './App.css';
-import Category from './components/Category/Category';
+import CallbackRefTextInput from './components/CallbackRefTextInput/CallbackRefTextInput';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import Posts from './components/Posts/Posts';
+import ParentRefTextInput from './components/RefTextInput/ParentrefTextInput';
 import Sidebar from './components/Sidebar/Sidebar';
 import ButtonContext from './Context/ButtonContext';
 import UserContext from './Context/UserContext';
@@ -27,7 +28,10 @@ function App() {
                 </div>
                 <div className='w-4/5'>
                     <div>
-                        <Category name="some category name" />
+                        <CallbackRefTextInput/>
+                        {/* <ParentRefTextInput/> */}
+                        {/* <RefTextInput/> */}
+                        {/* <Category name="some category name" /> */}
                     </div>
                     <div>
                         <Posts />

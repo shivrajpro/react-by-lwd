@@ -19,21 +19,21 @@ class Posts extends Component {
             showPosts: true,
             count: false,
         };
-        console.log('[posts.js] constructor called');
+        // console.log('[posts.js] constructor called');
     }
 
     static getDerivedStateFromProps(props, state) {
-        console.log('[posts.js] get derived called');
+        // console.log('[posts.js] get derived called');
         return state;
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        console.log('[posts.js] should component update fired');
+        // console.log('[posts.js] should component update fired');
         return true;
     }
 
     componentDidMount() {
-        console.log('[posts.js] component did mount called');
+        // console.log('[posts.js] component did mount called');
     }
 
     togglePostsHandler = () => {
@@ -107,24 +107,26 @@ class Posts extends Component {
     }
 
     render() {
-        console.log('[posts.js] render called');
+        // console.log('[posts.js] render called');
+/* 
         let posts = null;
 
-        // if (this.state.showPosts) {
-        //     posts = (
-        //         <div className='flex my-3'>
-        //             <SinglePost
-        //                 title={this.state.posts[0].title}
-        //                 description={this.state.posts[0].description}
-        //             />
-        //             <SinglePost
-        //                 title={this.state.posts[1].title}
-        //                 description={this.state.posts[1].description}
-        //             />
-        //         </div>
-        //     );
-        // }
-        return (
+        if (this.state.showPosts) {
+            posts = (
+                <div className='flex my-3'>
+                    <SinglePost
+                        title={this.state.posts[0].title}
+                        description={this.state.posts[0].description}
+                    />
+                    <SinglePost
+                        title={this.state.posts[1].title}
+                        description={this.state.posts[1].description}
+                    />
+                </div>
+            );
+        }
+
+ */        return (
             <div>
                 <div>{this.state.count && 'show Count'}</div>
                 <h2 className='text-2xl my-3'>{this.state.postTitle}</h2>
