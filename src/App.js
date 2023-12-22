@@ -1,4 +1,5 @@
 import './App.css';
+import Category from './components/Category/Category';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import Posts from './components/Posts/Posts';
 import Sidebar from './components/Sidebar/Sidebar';
@@ -25,7 +26,12 @@ function App() {
                     </ErrorBoundary>
                 </div>
                 <div className='w-4/5'>
-                    <Posts />
+                    <div>
+                        <Category name="some category name" />
+                    </div>
+                    <div>
+                        <Posts />
+                    </div>
                 </div>
             </div>
         </div>
