@@ -1,12 +1,15 @@
 import { Component } from "react";
 import { Post } from "../Post/Post";
 import axios from "axios";
+import SinglePostDetails from "../SinglePostDetails/SinglePostDetails";
+import FunctionalSinglePostDetails from "../FunctionalSinglePostDetails/FunctionalSinglePostDetails";
 
 export default class Posts extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            posts: []
+            posts: [],
+            selectedPostId: null
         }
     }
 
@@ -32,18 +35,35 @@ export default class Posts extends Component {
                     posts
                 })
 
-                console.log("state", this.state.posts);
+                // console.log("[state] posts", this.state.posts);
             })
     }
+
+    postClickedHandler(postId, event) {
+        // console.log('>> postId', postId, " event", event);
+        this.setState({
+            selectedPostId: postId
+        })
+        console.log("state", this.state);
+    }
+
     render() {
-        const posts = this.state.posts.map((p)=>{
-            return <Post key={p.id} post={p} />
+        const posts = this.state.posts.map((p) => {
+            return <Post key={p.id} post={p} postClicked={this.postClickedHandler.bind(this, p.id)} />
         })
         return <div>
             <p>posts works!</p>
             <div className="flex" >
                 {posts}
             </div>
+
+            {this.state.selectedPostId &&
+                <div>
+                    <h2 className="text-bold" >Post Details</h2>
+                    {/* <SinglePostDetails id={this.state.selectedPostId} /> */}
+                    <FunctionalSinglePostDetails id={this.state.selectedPostId} />
+                </div>
+            }
             <div>
                 {!this.state.posts.length && <p>No posts found!</p>}
             </div>
