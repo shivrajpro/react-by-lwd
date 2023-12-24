@@ -3,40 +3,50 @@ import { Post } from "../Post/Post";
 import axios from "axios";
 import SinglePostDetails from "../SinglePostDetails/SinglePostDetails";
 import FunctionalSinglePostDetails from "../FunctionalSinglePostDetails/FunctionalSinglePostDetails";
+import { AddPost } from "../AddPost/AddPost";
 
 export default class Posts extends Component {
     constructor(props) {
         super(props);
         this.state = {
             posts: [],
-            selectedPostId: null
+            selectedPostId: null,
+            isAddPost: false
         }
     }
 
     componentDidMount() {
+        this.getPosts();
+    }
+
+    getPosts() {
+        // console.log('getPosts');
+        this.setState({
+            isAddPost: false
+        })
+        // return;
         axios.get(`https://legacy-react-v17-default-rtdb.firebaseio.com/posts.json`)
             .then(response => {
                 const postsResponse = response.data;
 
-                console.log('>> postsResponse', postsResponse);
+                // console.log('>> postsResponse', postsResponse);
                 const posts = [];
                 for (const postId in postsResponse) {
                     const post = {
                         id: postId,
                         title: postsResponse[postId].title,
                         description: postsResponse[postId].description,
-                    }
+                    };
                     // console.log(post);
-                    posts.push(post)
+                    posts.push(post);
                 }
 
                 // console.log('>> posts',posts);
                 this.setState({
                     posts
-                })
+                });
 
-                // console.log("[state] posts", this.state.posts);
-            })
+            });
     }
 
     postClickedHandler(postId, event) {
@@ -47,13 +57,41 @@ export default class Posts extends Component {
         console.log("state", this.state);
     }
 
+    postDeleteHandler(postId, event){
+        event.stopPropagation();
+        if(window.confirm("Are you sure to delete this post?")){
+            axios.delete(`https://legacy-react-v17-default-rtdb.firebaseio.com/posts/${postId}.json`)
+            .then(response=>{
+                console.log('postDeleteHandler response', response);
+                this.getPosts();
+            })
+        }
+    }
+
+    addPostHandler(postId, event) {
+        // event.preventDefault();
+        this.setState({
+            isAddPost: true
+        })
+    }
+
     render() {
         const posts = this.state.posts.map((p) => {
-            return <Post key={p.id} post={p} postClicked={this.postClickedHandler.bind(this, p.id)} />
+            return <Post key={p.id} post={p} 
+            postClicked={this.postClickedHandler.bind(this, p.id)} 
+            postDeleteClicked={this.postDeleteHandler.bind(this, p.id)}
+            />
         })
         return <div>
             <p>posts works!</p>
-            <div className="flex" >
+            <div className="m-2" >
+                <a href="#" className="bg-blue-500 p-2 text-white" 
+                onClick={this.addPostHandler.bind(this)}
+                >
+                    Create Post
+                </a>
+            </div>
+            <div className="flex flex-wrap" >
                 {posts}
             </div>
 
@@ -66,6 +104,9 @@ export default class Posts extends Component {
             }
             <div>
                 {!this.state.posts.length && <p>No posts found!</p>}
+            </div>
+            <div className="m-2" >
+                {this.state.isAddPost && <AddPost onPostAdded={this.getPosts.bind(this)} />}
             </div>
         </div>
     }

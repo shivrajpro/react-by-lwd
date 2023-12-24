@@ -6,5 +6,8 @@ export function Post(props) {
         <p>id : {props.post.id} </p>
         <p>title : {props.post.title} </p>
         <p>description : {props.post.description}</p>
+        <button className="bg-red-500 text-white m-2 p-2"
+        onClick={props.postDeleteClicked}
+        >Delete</button>
     </a>
 }
