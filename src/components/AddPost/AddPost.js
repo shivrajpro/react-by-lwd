@@ -14,7 +14,7 @@ export function AddPost(props) {
             description
         }
 
-        axios.post(`https://legacy-react-v17-default-rtdb.firebaseio.com/posts.json`, postData)
+        axios.post(`/posts.json`, postData)
         .then(response=>{
             // console.log(' response',response);
             setTitle(''); setDescription('');

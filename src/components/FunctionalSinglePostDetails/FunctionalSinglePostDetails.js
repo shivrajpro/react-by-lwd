@@ -10,7 +10,7 @@ export default function FunctionalSinglePostDetails(props) {
     })
 
     function getPostDetails() {
-        axios.get(`https://legacy-react-v17-default-rtdb.firebaseio.com/posts/${props.id}.json`)
+        axios.get(`posts/${props.id}.json`)
             .then(response => {
                 console.log(' response', response);
                 setPost({...response.data, id:props.id})

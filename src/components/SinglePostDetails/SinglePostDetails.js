@@ -19,7 +19,7 @@ export default class SinglePostDetails extends Component {
     }
 
     getPostDetails = ()=> {
-        axios.get(`https://legacy-react-v17-default-rtdb.firebaseio.com/posts/${this.props.id}.json`)
+        axios.get(`posts/${this.props.id}.json`)
             .then(response => {
                 console.log(' response', response);
                 const post = response.data;

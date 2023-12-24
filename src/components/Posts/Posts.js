@@ -1,9 +1,8 @@
 import { Component } from "react";
-import { Post } from "../Post/Post";
-import axios from "axios";
-import SinglePostDetails from "../SinglePostDetails/SinglePostDetails";
-import FunctionalSinglePostDetails from "../FunctionalSinglePostDetails/FunctionalSinglePostDetails";
 import { AddPost } from "../AddPost/AddPost";
+import axios from '../../axiosinstance'
+import FunctionalSinglePostDetails from "../FunctionalSinglePostDetails/FunctionalSinglePostDetails";
+import { Post } from "../Post/Post";
 
 export default class Posts extends Component {
     constructor(props) {
@@ -25,7 +24,7 @@ export default class Posts extends Component {
             isAddPost: false
         })
         // return;
-        axios.get(`https://legacy-react-v17-default-rtdb.firebaseio.com/posts.json`)
+        axios.get(`posts.json`)
             .then(response => {
                 const postsResponse = response.data;
 
@@ -60,7 +59,7 @@ export default class Posts extends Component {
     postDeleteHandler(postId, event){
         event.stopPropagation();
         if(window.confirm("Are you sure to delete this post?")){
-            axios.delete(`https://legacy-react-v17-default-rtdb.firebaseio.com/posts/${postId}.json`)
+            axios.delete(`/posts/${postId}.json`)
             .then(response=>{
                 console.log('postDeleteHandler response', response);
                 this.getPosts();
@@ -85,11 +84,11 @@ export default class Posts extends Component {
         return <div>
             <p>posts works!</p>
             <div className="m-2" >
-                <a href="#" className="bg-blue-500 p-2 text-white" 
+                <button className="bg-blue-500 p-2 text-white" 
                 onClick={this.addPostHandler.bind(this)}
                 >
                     Create Post
-                </a>
+                </button>
             </div>
             <div className="flex flex-wrap" >
                 {posts}
