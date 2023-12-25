@@ -20,6 +20,9 @@ export function Posts(props) {
                     <li className="mx-2 underline decoratino-sky-500" >
                         <Link to='/posts/3' > Post 3 </Link>
                     </li>
+                    <li className="mx-2 underline decoratino-sky-500" >
+                        <Link to='/posts/4' > Post 4 </Link>
+                    </li>
                 </ul>
             </div>
             <button className="text-white bg-red-500 p-2 my-2"

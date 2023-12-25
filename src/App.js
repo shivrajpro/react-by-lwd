@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom/cjs/react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom/cjs/react-router-dom';
 import './App.css';
 import { About } from './components/About/About';
 import { Footer } from './components/Footer/Footer';
@@ -26,7 +26,8 @@ function App() {
                         <Route path='/about' component={About} />
                         <Route path='/contact' component={Contact} />
                         <Route path='/posts' component={Posts} />
-                        <Route path='/' render={(props) => <Home {...props} />} />
+                        <Redirect from="/" to="/posts" />
+                        {/* <Route path='/' render={(props) => <Home {...props} />} /> */}
                     </Switch>
                 </div>
                 <Footer />
