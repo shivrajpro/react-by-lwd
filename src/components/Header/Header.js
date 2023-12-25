@@ -38,7 +38,7 @@ export function Header(props) {
                         </NavLink>
                     </li>
                     <li className='mr-2'>
-                        <NavLink to='/posts/12' 
+                        <NavLink to='/posts' 
                         activeClassName='underline decoration-sky-500'>
                             Posts
                         </NavLink>
