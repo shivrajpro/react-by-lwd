@@ -6,9 +6,11 @@ import { Header } from './components/Header/Header';
 import { Home } from './components/Home/Home';
 import { Contact } from './components/Contact/Contact';
 import { Posts } from './components/Posts/Posts';
-import SinglePost from './SinglePost/SinglePost';
+import SinglePost from './components/SinglePost/SinglePost';
+import { PageNotFound } from './components/PageNotFound/PageNotFound';
 
 function App() {
+    const isAuth = true;
     return (
         // basename="/leela" 
         <BrowserRouter>
@@ -23,10 +25,13 @@ function App() {
                     </Route> */}
                     {/* <Route path='/home' exact component={Home} /> */}
                     <Switch>
-                        <Route path='/about' component={About} />
+                        {isAuth && (<Route path='/about' component={About} />)}
+                        
                         <Route path='/contact' component={Contact} />
                         <Route path='/posts' component={Posts} />
-                        <Redirect from="/" to="/posts" />
+                        <Redirect from="/" to="/posts" exact />
+                        {/* will be redirected if anything apart from configured routes is found*/}
+                        <Route path="*" render={(props)=> <PageNotFound/> } />
                         {/* <Route path='/' render={(props) => <Home {...props} />} /> */}
                     </Switch>
                 </div>

@@ -1,5 +1,5 @@
 import { Link, Route } from "react-router-dom/cjs/react-router-dom";
-import SinglePost from "../../SinglePost/SinglePost";
+import SinglePost from "../SinglePost/SinglePost";
 
 export function Posts(props) {
     console.log("Posts", props);
