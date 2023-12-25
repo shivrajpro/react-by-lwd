@@ -1,4 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
+
 export function Header(props) {
     return (
         <div className='flex justify-between bg-purple-400 px-3 py-1'>
@@ -37,7 +38,7 @@ export function Header(props) {
                         </NavLink>
                     </li>
                     <li className='mr-2'>
-                        <NavLink to='/posts' 
+                        <NavLink to='/posts/12' 
                         activeClassName='underline decoration-sky-500'>
                             Posts
                         </NavLink>

@@ -5,6 +5,7 @@ import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import { Home } from './components/Home/Home';
 import { Contact } from './components/Contact/Contact';
+import { Posts } from './components/Posts/Posts';
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                     <Switch>
                         <Route path='/about' component={About} />
                         <Route path='/contact' component={Contact} />
+                        <Route path='/posts/:id' component={Posts} />
                         <Route path='/' render={(props) => <Home {...props} />} />
                     </Switch>
                 </div>
