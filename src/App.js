@@ -4,7 +4,7 @@ import './App.css';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 
-const About = lazy(() =>import(/* webpackChunkName: "About" */ "./components/About/About"));
+const About = lazy(() => import(/* webpackChunkName: "About" */ "./components/About/About"));
 const Contact = lazy(() => import(/* webpackChunkName: "Contact" */ "./components/Contact/Contact"));
 const Posts = lazy(() => import(/* webpackChunkName: "Posts" */ "./components/Posts/Posts"));
 const PageNotFound = lazy(() => import("./components/PageNotFound/PageNotFound"));
