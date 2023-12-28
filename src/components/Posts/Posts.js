@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { createPostAction } from "../../store/actions/PostActions";
+import { createPostAction, getPostsAction } from "../../store/actions/PostActions";
 import { bindActionCreators } from "redux";
 
 const { Component } = require("react");
@@ -7,6 +7,10 @@ const { Component } = require("react");
 class Posts extends Component {
     onCreatePost() {
         this.props.createPostAction();
+    }
+
+    componentDidMount(){
+        this.props.getPostsAction();
     }
 
     render() {
@@ -40,6 +44,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     // return { createPost: () => dispatch(createPostAction()) } //will be sent as props to component
     // return bindActionCreators({ createPost: createPostAction }, dispatch)
-    return bindActionCreators({ createPostAction }, dispatch)
+    return bindActionCreators({ createPostAction, getPostsAction }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Posts);

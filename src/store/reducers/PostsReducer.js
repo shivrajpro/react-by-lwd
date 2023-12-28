@@ -1,4 +1,4 @@
-import { CREATE_POST_ACTION } from "../actions/PostActions";
+import { CREATE_POST_ACTION, GET_POSTS_SUCCESS } from "../actions/PostActions";
 
 const initialState = {
     posts: [
@@ -8,6 +8,7 @@ const initialState = {
 }
 
 export default function PostsReducer(state = initialState, action) {
+    //reducers are pure function we cannot make async calls here
     if (action.type === CREATE_POST_ACTION) {
         const post = { id: Math.random(), title: 'third post', description: 'third description' }
 
@@ -17,6 +18,13 @@ export default function PostsReducer(state = initialState, action) {
         return {
             ...state,
             posts
+        }
+    }
+
+    if(action.type === GET_POSTS_SUCCESS){
+        return {
+            ...state,
+            posts: action.payload
         }
     }
     return state;
