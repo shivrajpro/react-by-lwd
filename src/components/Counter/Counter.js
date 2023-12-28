@@ -27,7 +27,7 @@ export default class Counter extends Component {
         this.setState({
             counter: state.counter
         });
-        console.log('state',this.state);
+        // console.log('state',this.state);
     }
 
 
