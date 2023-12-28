@@ -1,0 +1,8 @@
+step 1: create a store.js
+step 2: add provider in index.js with store
+step 3: create a reducer with initial state and pass it in store
+step 4: create map state to props in your class component (posts)
+step 5: use the state data from props in render method of component
+step 6: create an action function in actions file with type param
+step 7: create map dispatch to props in class component and pass it to connect
+step 8: use bindActionCreators to dispatch the actions in component
