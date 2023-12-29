@@ -1,4 +1,4 @@
-import { CREATE_POST_ACTION, CREATE_POST_SUCCESS, GET_POSTS_SUCCESS } from "../actions/PostActions";
+import { CREATE_POST_ACTION, CREATE_POST_SUCCESS, DELETE_POST_SUCCESS, EDIT_POST_SUCCESS, GET_POSTS_SUCCESS } from "../actions/PostActions";
 
 // posts: [
 //     { id: '1', title: 'first post', description: 'first description' },
@@ -38,5 +38,29 @@ export default function PostsReducer(state = initialState, action) {
             posts
         }
     }
+
+    if(action.type === EDIT_POST_SUCCESS){
+        const posts = [...state.posts];
+        const postIndex = posts.findIndex(
+            (post) => post.id === action.payload.id,
+        );
+
+        posts[postIndex] = action.payload;
+        return {
+            ...state,
+            posts
+        }
+    }
+
+    if(action.type === DELETE_POST_SUCCESS){
+        const posts = [...state.posts];
+        const newPosts = posts.filter(p=>p.id !== action.payload);
+
+        return {
+            ...state,
+            posts: newPosts
+        }
+    }
+
     return state;
 }

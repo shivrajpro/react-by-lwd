@@ -3,7 +3,7 @@ import './App.css';
 import Home from './components/Home/Home';
 import Posts from './components/Posts/Posts';
 import Header from './components/Header/Header';
-import CreatePost from './components/CreaetPost/CreatePost';
+import CreatePost from './components/CreatePost/CreatePost';
 
 
 function App() {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { createPostAction } from "../../store/actions/PostActions";
+import { CreatePostAction } from "../../store/actions/PostActions";
 
 export default function CreatePost(props) {
     const [title, setTitle] = useState('');
@@ -16,7 +16,7 @@ export default function CreatePost(props) {
             title,
             description
         }
-        dispatch(createPostAction(postData, props.history));
+        dispatch(CreatePostAction(postData, props.history));
         // props.history.push('/posts');
     }
     return (
