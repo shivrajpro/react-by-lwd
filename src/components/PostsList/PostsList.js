@@ -1,8 +1,16 @@
 import { connect } from "react-redux"
 import { incrementCount } from "../../store/actions/PostsAction"
 import { getActivePosts } from "../../store/selectors/PostsSelectors";
+import { useState } from "react";
+import  SinglePost  from "../SinglePost/SinglePost";
 
 function PostsList(props) {
+    const [postId, setPostId] = useState('');
+
+    function onPostClick(postId) {
+        setPostId(postId);
+    }
+
     return (
         <div>
             <p>posts list works!</p>
@@ -12,8 +20,12 @@ function PostsList(props) {
             >increment</button>
             <div>
                 {props.posts.map(post => {
-                    return <div key={post.id} > {post.title} </div>
+                    return <div className="cursor-pointer"
+                    key={post.id} onClick={()=>onPostClick(post.id)} > {post.title} </div>
                 })}
+            </div>
+            <div>
+                {postId && <SinglePost id={postId}/>}
             </div>
         </div>
     )
