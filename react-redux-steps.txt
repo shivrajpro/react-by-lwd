@@ -18,5 +18,6 @@ step 5: pass the middleware to applyMiddleware of redux and then to createStore
 
 Redux Thunk steps
 step 1: pass the thunk object to applyMiddleware
-step 2: write the API call in actions with the dispatch
+step 2: fire the API calls in actions with the dispatch. 
+Actions file will contain the logic for actions and dispatching logic
 step 3: create a service file and write the logic for API calls and formatting the data

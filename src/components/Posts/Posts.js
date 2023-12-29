@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { createPostAction, getPostsAction } from "../../store/actions/PostActions";
 import { bindActionCreators } from "redux";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const { Component } = require("react");
 
@@ -10,7 +11,8 @@ class Posts extends Component {
     }
 
     componentDidMount(){
-        this.props.getPostsAction();
+        if(this.props.posts && !this.props.posts.length)
+            this.props.getPostsAction();
     }
 
     render() {
@@ -27,11 +29,9 @@ class Posts extends Component {
             </div>
             );
         }
-        return (<div>
-            <button className="bg-red-500 text-white p-2 my-2"
-                onClick={this.onCreatePost.bind(this)}
-            >create post</button>
-            <p className="text-bold text-lg" >Posts List</p>
+        return (<div className="p-2 my-2">
+            <Link to='/create-post' className="bg-red-500 text-white p-2 my-2">create post</Link>
+            <p className="text-bold text-lg my-2" >Posts List</p>
             <div className="flex flex-wrap" > {posts} </div>
         </div>)
     }
