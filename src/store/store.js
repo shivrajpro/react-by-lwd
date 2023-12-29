@@ -1,9 +1,10 @@
 import { applyMiddleware, compose, createStore } from "redux";
+import thunk from "redux-thunk";
 import PostsReducer from "./reducers/PostsReducer";
-import { GET_POSTS, getPostsSuccessAction } from "./actions/PostActions";
-import axios from "axios";
 
 // const exampleMiddleware = store => next => action => next(action)
+
+/* 
 const loggerMiddleware = store => next => action => {
     console.log('dispatching action', action);
     console.log('STATE BEFORE dispatching', store.getState());
@@ -33,11 +34,10 @@ const fetchDataMiddleware = store => next => action => {
     }
     return next(action);
 }
-const middleware = applyMiddleware(loggerMiddleware, fetchDataMiddleware);
+*/
+const middleware = applyMiddleware(thunk);
 
 const composedEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-
 
 export const store = createStore(PostsReducer, composedEnhancers(middleware));
 

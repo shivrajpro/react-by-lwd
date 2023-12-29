@@ -1,3 +1,5 @@
+import { formatPosts, getPosts } from "../../services/PostsServices";
+
 export const CREATE_POST_ACTION = '[Post Actions] create post';
 export const GET_POSTS = '[Post Actions] get posts';
 export const GET_POSTS_SUCCESS = '[Post Actions] get posts success';
@@ -9,8 +11,12 @@ export function createPostAction() {
 }
 
 export function getPostsAction() {
-    return {
-        type: GET_POSTS
+    return (dispatch, getState) => {
+        getPosts().then(response => {
+                const posts = formatPosts(response.data);
+                dispatch(getPostsSuccessAction(posts));
+                console.log(getState());
+            })
     }
 }
 

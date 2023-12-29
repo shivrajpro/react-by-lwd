@@ -6,3 +6,17 @@ step 5: use the state data from props in render method of component
 step 6: create an action function in actions file with type param
 step 7: create map dispatch to props in class component and pass it to connect
 step 8: use bindActionCreators to dispatch the actions in component
+
+
+For creating the middleware
+step 1: create fetchDataMiddleware that has access to store, next and action
+step 2: make the API call depending on action type, format the data
+step 3: dispatch the success action with data that will update the state in reducer
+step 4: add the case for success action and return the state
+step 5: pass the middleware to applyMiddleware of redux and then to createStore
+
+
+Redux Thunk steps
+step 1: pass the thunk object to applyMiddleware
+step 2: write the API call in actions with the dispatch
+step 3: create a service file and write the logic for API calls and formatting the data
