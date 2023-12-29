@@ -1,14 +1,27 @@
+import { BrowserRouter, Route, Switch, } from 'react-router-dom';
 import './App.css';
-import PostsList from './components/PostsList/PostsList';
+import Home from './components/Home/Home';
+import Posts from './components/Posts/Posts';
+import Header from './components/Header/Header';
+import CreatePost from './components/CreaetPost/CreatePost';
+
 
 function App() {
     return (
-        <div className='container m-2'>
-            <h2>app works!</h2>
-            <button className="bg-red-500 text-white p-2 my-2">Tailwind</button>
-            <div>
-                <PostsList/>
-            </div>
+        <div>
+            {/* <p>app works!</p> */}
+            <BrowserRouter>
+                <div>
+                    <Header/>
+                    <div>
+                        <Switch>
+                            <Route path='/posts' component={Posts} />
+                            <Route path='/create-post' component={CreatePost} />
+                            <Route path='/' component={Home} />
+                        </Switch>
+                    </div>
+                </div>
+            </BrowserRouter>
         </div>
     );
 }
