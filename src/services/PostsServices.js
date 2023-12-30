@@ -1,23 +1,25 @@
-import axios from "axios";
+import axiosInstance from "./AxiosInstance";
 
-export function getPosts() {
-    return axios.get(`https://legacy-react-v17-default-rtdb.firebaseio.com/posts.json`);
+const postsUrl = 'https://legacy-react-v17-default-rtdb.firebaseio.com';
+
+export function getPosts(token) {
+    return axiosInstance.get(`${postsUrl}/posts.json`);
 }
 
 export function CreatePost(postData) {
-    return axios.post(`https://legacy-react-v17-default-rtdb.firebaseio.com/posts.json`, postData);
+    return axiosInstance.post(`${postsUrl}/posts.json`, postData);
 }
 
 export function updatePost(postData, postId) {
-    return axios.put(
-        `https://legacy-react-v17-default-rtdb.firebaseio.com/posts/${postId}.json`, 
+    return axiosInstance.put(
+        `${postsUrl}/posts/${postId}.json`, 
         postData
     );
 }
 
 export function deletePost(postId) {
-    return axios.delete(
-        `https://legacy-react-v17-default-rtdb.firebaseio.com/posts/${postId}.json`
+    return axiosInstance.delete(
+        `${postsUrl}/posts/${postId}.json`
     );
 }
 

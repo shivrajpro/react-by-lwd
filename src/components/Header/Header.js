@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { isAuthenticated } from "../../store/selectors/AuthSelectors";
+import { connect, useDispatch } from "react-redux";
+import { logoutAction } from "../../store/actions/AuthActions";
 
-export default function Header(props) {
+function Header(props) {
+    // console.log('Header', props);
+    const dispatch = useDispatch();
+
+    function onLogout(e) {
+        e.preventDefault();
+        dispatch(logoutAction());
+    }
     return (<div>
         {/* <p>header works!</p> */}
         <div className="bg-red-500 text-white p-2 text-white flex items-center justify-between" >
@@ -8,9 +18,26 @@ export default function Header(props) {
             <div className="" >
                 <Link to='' className="px-2" >Home</Link>
                 <Link to='/posts' className="px-2" >Posts</Link>
-                <Link to='/sign-up' className="px-2" >SignUp</Link>
-                <Link to='/sign-in' className="px-2" >SignIn</Link>
+                {!props.isAuth &&
+                    <>
+                        <Link to='/sign-up' className="px-2" >SignUp</Link>
+                        <Link to='/sign-in' className="px-2" >SignIn</Link>
+                    </>
+                }
+                {props.isAuth &&
+                    <button className="px-2"
+                        onClick={onLogout}>
+                        Logout
+                    </button>
+                }
             </div>
         </div>
     </div>)
 }
+
+const mapStateToProps = (state) => {
+    return {
+        isAuth: isAuthenticated(state)
+    }
+}
+export default connect(mapStateToProps)(Header);

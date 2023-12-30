@@ -1,4 +1,4 @@
-import { formatError, signIn, signUp } from "../../services/AuthService";
+import { deleteTokenFromLocalStorage, formatError, runLogoutTimer, saveTokenInLocalStorage, signIn, signUp } from "../../services/AuthService";
 
 export const SIGN_UP_ACTION = '[signup] sign up';
 export const SIGN_UP_SUCCESS = '[signup] sign up success';
@@ -10,11 +10,14 @@ export const SIGN_IN_ACTION = '[signin] sign in';
 export const SIGN_IN_SUCCESS = '[signin] sign in success';
 export const SIGN_IN_FAILED = '[signin] sign in failed';
 
+export const LOGOUT_ACTION = '[logout] logout';
+
 export function signUpAction(email, password) {
     return (dispatch)=>{
         return signUp(email, password)
         .then(
             response=>{
+                saveTokenInLocalStorage(response.data);
                 dispatch(signUpSuccess(response.data))
             }
         ).catch(error=>{
@@ -52,6 +55,8 @@ export function signInAction(email, password) {
     return (dispatch)=>{
         signIn(email, password)
         .then(response=>{
+            saveTokenInLocalStorage(response.data);
+            runLogoutTimer(dispatch, response.data.expiresIn);
             dispatch(signInSuccess(response.data));
         })
         .catch(e=>{
@@ -75,5 +80,12 @@ export function signInFailed(message) {
     return {
         type: SIGN_IN_FAILED,
         payload: message
+    }
+}
+
+export function logoutAction() {
+    deleteTokenFromLocalStorage();
+    return {
+        type: LOGOUT_ACTION
     }
 }

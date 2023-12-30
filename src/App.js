@@ -6,9 +6,17 @@ import Header from './components/Header/Header';
 import CreatePost from './Pages/CreatePost/CreatePost';
 import SignUp from './Pages/SignUp/SignUp';
 import SignIn from './Pages/SignIn/SignIn';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { checkAutoLogin } from './services/AuthService';
 
 
 function App() {
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        checkAutoLogin(dispatch);
+    }, [])
     return (
         <div>
             {/* <p>app works!</p> */}

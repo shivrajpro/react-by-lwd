@@ -1,4 +1,10 @@
-import { CREATE_POST_ACTION, CREATE_POST_SUCCESS, DELETE_POST_SUCCESS, EDIT_POST_SUCCESS, GET_POSTS_SUCCESS } from "../actions/PostActions";
+import {
+    CREATE_POST_ACTION,
+    CREATE_POST_SUCCESS,
+    DELETE_POST_SUCCESS,
+    EDIT_POST_SUCCESS,
+    GET_POSTS_SUCCESS
+} from "../actions/PostTypes";
 
 // posts: [
 //     { id: '1', title: 'first post', description: 'first description' },
@@ -22,14 +28,14 @@ export default function PostsReducer(state = initialState, action) {
         }
     }
 
-    if(action.type === GET_POSTS_SUCCESS){
+    if (action.type === GET_POSTS_SUCCESS) {
         return {
             ...state,
             posts: action.payload
         }
     }
 
-    if(action.type === CREATE_POST_SUCCESS){
+    if (action.type === CREATE_POST_SUCCESS) {
         const posts = [...state.posts];
         posts.push(action.payload);
 
@@ -39,7 +45,7 @@ export default function PostsReducer(state = initialState, action) {
         }
     }
 
-    if(action.type === EDIT_POST_SUCCESS){
+    if (action.type === EDIT_POST_SUCCESS) {
         const posts = [...state.posts];
         const postIndex = posts.findIndex(
             (post) => post.id === action.payload.id,
@@ -52,9 +58,9 @@ export default function PostsReducer(state = initialState, action) {
         }
     }
 
-    if(action.type === DELETE_POST_SUCCESS){
+    if (action.type === DELETE_POST_SUCCESS) {
         const posts = [...state.posts];
-        const newPosts = posts.filter(p=>p.id !== action.payload);
+        const newPosts = posts.filter(p => p.id !== action.payload);
 
         return {
             ...state,

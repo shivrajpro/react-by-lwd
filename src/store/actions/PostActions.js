@@ -1,28 +1,30 @@
 import { CreatePost, formatPosts, getPosts, updatePost, deletePost } from "../../services/PostsServices";
-
-export const CREATE_POST_ACTION = '[Post Actions] create post';
-export const CREATE_POST_SUCCESS = '[Post Actions] create post success';
-export const GET_POSTS = '[Post Actions] get posts';
-export const GET_POSTS_SUCCESS = '[Post Actions] get posts success';
-export const EDIT_POST = '[Post Actions] edit post';
-export const EDIT_POST_SUCCESS = '[Post Actions] edit post success';
-export const DELETE_POST = '[Post Actions] delete post';
-export const DELETE_POST_SUCCESS = '[Post Actions] delete post success';
+import {
+    GET_POSTS_SUCCESS,
+    CREATE_POST_SUCCESS,
+    EDIT_POST_SUCCESS,
+    DELETE_POST_SUCCESS
+} from "./PostTypes";
 
 export function getPostsAction() {
     return (dispatch, getState) => {
-        getPosts().then(response => {
-                const posts = formatPosts(response.data);
-                dispatch(getPostsSuccessAction(posts));
-            })
+        const state = getState();
+        // console.log('state',state);
+        const token = state.auth.auth.idToken;
+        // have to pass token this way to every request
+        // if we dont use interceptors
+        getPosts(token).then(response => {
+            const posts = formatPosts(response.data);
+            dispatch(getPostsSuccessAction(posts));
+        })
     }
 }
 
 export function CreatePostAction(postData, history) {
-    return (dispatch)=>{
-        CreatePost(postData).then(response=>{
+    return (dispatch) => {
+        CreatePost(postData).then(response => {
             const singlePost = {
-                id:response.data.name,
+                id: response.data.name,
                 ...postData
             }
             dispatch(CreatePostSuccessAction(singlePost));
@@ -45,9 +47,9 @@ export function CreatePostSuccessAction(singlePost) {
     }
 }
 
-export function editPostAction(postData, history){
-    return (dispatch)=>{
-        updatePost(postData).then(response=>{
+export function editPostAction(postData, history) {
+    return (dispatch) => {
+        updatePost(postData).then(response => {
             dispatch(editPostSuccess(postData));
             history.push('/posts');
         })
@@ -62,8 +64,8 @@ export function editPostSuccess(updatedPost) {
 }
 
 export function deletePostAction(postId, history) {
-    return (dispatch)=>{
-        deletePost(postId).then(response=>{
+    return (dispatch) => {
+        deletePost(postId).then(response => {
             dispatch(deletePostSuccess(postId));
             history.push('/posts');
         })
