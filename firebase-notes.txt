@@ -1,0 +1,3 @@
+Firebase Auth REST API
+sign up with email and password
+setup different sign-in methods if API key is not generated

@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { CreatePostAction, deletePostAction, getPostsAction } from "../../store/actions/PostActions";
 import { bindActionCreators } from "redux";
 import { Link, Route, Switch } from "react-router-dom";
-import SinglePost from "../SinglePost/SinglePost";
-import EditPost from "../EditPost/EditPost";
+import SinglePost from "../../Pages/SinglePost/SinglePost";
+import EditPost from "../../Pages/EditPost/EditPost";
 
 class Posts extends Component {
     onCreatePost() {
@@ -71,7 +71,7 @@ class Posts extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return { posts: state.posts } //will be sent as props to component
+    return { posts: state.posts.posts } //will be sent as props to component
 }
 
 

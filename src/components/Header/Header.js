@@ -7,7 +7,9 @@ export default function Header(props) {
             <h2 className="font-bold text-lg" >React Router</h2>
             <div className="" >
                 <Link to='' className="px-2" >Home</Link>
-                <Link to='posts' className="px-2" >Posts</Link>
+                <Link to='/posts' className="px-2" >Posts</Link>
+                <Link to='/sign-up' className="px-2" >SignUp</Link>
+                <Link to='/sign-in' className="px-2" >SignIn</Link>
             </div>
         </div>
     </div>)
