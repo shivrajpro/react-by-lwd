@@ -39,7 +39,10 @@ export default function AuthReducer(state = initialState, action) {
                 "refreshToken": "",
                 "expiresIn": "",
                 "localId": ""
-            }
+            },
+            successMessage: '',
+            errorMessage: '',
+            showLoading: false
         }
     }
 

@@ -1,15 +1,15 @@
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, withRouter } from "react-router-dom";
 import { isAuthenticated } from "../../store/selectors/AuthSelectors";
 import { connect, useDispatch } from "react-redux";
 import { logoutAction } from "../../store/actions/AuthActions";
 
 function Header(props) {
-    // console.log('Header', props);
+    console.log('Header', props);
     const dispatch = useDispatch();
 
     function onLogout(e) {
-        e.preventDefault();
-        dispatch(logoutAction());
+        // e.preventDefault();
+        dispatch(logoutAction(props.history));
     }
     return (<div>
         {/* <p>header works!</p> */}
@@ -40,4 +40,4 @@ const mapStateToProps = (state) => {
         isAuth: isAuthenticated(state)
     }
 }
-export default connect(mapStateToProps)(Header);
+export default withRouter(connect(mapStateToProps)(Header));

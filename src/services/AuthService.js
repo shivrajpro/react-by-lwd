@@ -51,11 +51,11 @@ export function runLogoutTimer(dispatch, expirationTime) {
     }, expirationTime * 1000);
 }
 
-export function checkAutoLogin(dispatch) {
+export function checkAutoLogin(dispatch, history) {
     const tokenDetailsStr = localStorage.getItem('userDetails');
 
     if(!tokenDetailsStr){
-        dispatch(logoutAction());
+        dispatch(logoutAction(history));
         return;
     }
 
@@ -64,7 +64,7 @@ export function checkAutoLogin(dispatch) {
     const todaysDate = new Date();
 
     if(todaysDate > expiryDate){
-        dispatch(logoutAction());
+        dispatch(logoutAction(history));
         return;
     }
 
@@ -72,5 +72,5 @@ export function checkAutoLogin(dispatch) {
 
     const expirationTime = expiryDate.getTime() - todaysDate.getTime();
     // console.log('expirationTime',expirationTime / 1000);
-    runLogoutTimer(dispatch, expirationTime / 1000);
+    runLogoutTimer(dispatch, expirationTime / 1000, history);
 }

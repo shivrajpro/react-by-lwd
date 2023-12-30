@@ -4,7 +4,7 @@ import { signUpAction, toggleLoadingAction } from "../../store/actions/AuthActio
 import Loader from "../../components/Loader/Loader";
 
 function SignUp(props) {
-    // console.log('SignUp', props);
+    console.log('SignUp', props);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     let initErrors = { email: '', password: '' };
@@ -32,7 +32,7 @@ function SignUp(props) {
         if (hasError) return;
 
         dispatch(toggleLoadingAction(true));
-        dispatch(signUpAction(email, password));
+        dispatch(signUpAction(email, password, props.history));
     }
     return (
         <div className="p-2">

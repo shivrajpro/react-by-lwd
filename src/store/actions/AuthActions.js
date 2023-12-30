@@ -12,13 +12,14 @@ export const SIGN_IN_FAILED = '[signin] sign in failed';
 
 export const LOGOUT_ACTION = '[logout] logout';
 
-export function signUpAction(email, password) {
+export function signUpAction(email, password, history) {
     return (dispatch)=>{
         return signUp(email, password)
         .then(
             response=>{
                 saveTokenInLocalStorage(response.data);
-                dispatch(signUpSuccess(response.data))
+                dispatch(signUpSuccess(response.data));
+                history.push('/');
             }
         ).catch(error=>{
             const errorMsg = formatError(error.response.data);
@@ -51,13 +52,14 @@ export function toggleLoadingAction(status) {
     }
 }
 
-export function signInAction(email, password) {
+export function signInAction(email, password, history) {
     return (dispatch)=>{
         signIn(email, password)
         .then(response=>{
             saveTokenInLocalStorage(response.data);
-            runLogoutTimer(dispatch, response.data.expiresIn);
+            runLogoutTimer(dispatch, response.data.expiresIn, history);
             dispatch(signInSuccess(response.data));
+            history.push('/');
         })
         .catch(e=>{
             const errorResponse = e.response.data;
@@ -83,8 +85,9 @@ export function signInFailed(message) {
     }
 }
 
-export function logoutAction() {
+export function logoutAction(history) {
     deleteTokenFromLocalStorage();
+    // history.push('/');
     return {
         type: LOGOUT_ACTION
     }
