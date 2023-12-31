@@ -10,9 +10,9 @@ export function CreatePost(postData) {
     return axiosInstance.post(`${postsUrl}/posts.json`, postData);
 }
 
-export function updatePost(postData, postId) {
-    return axiosInstance.put(
-        `${postsUrl}/posts/${postId}.json`, 
+export function updatePost(postData) {
+    return axiosInstance.patch(
+        `${postsUrl}/posts/${postData.id}.json`, 
         postData
     );
 }

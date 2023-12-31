@@ -49,6 +49,8 @@ export function CreatePostSuccessAction(singlePost) {
 
 export function editPostAction(postData, history) {
     return (dispatch) => {
+        console.log('editPostAction',postData);
+        // return;
         updatePost(postData).then(response => {
             dispatch(editPostSuccess(postData));
             history.push('/posts');
