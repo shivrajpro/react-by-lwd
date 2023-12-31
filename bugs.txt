@@ -1,3 +1,13 @@
 1. refreshing after sign in or sign up is redirecting to '/' Home
 2. auto logout should navigate sign in page
 3. update post is not working as expected
+
+fixed above bugs
+
+know issue:
+1. sign in with email: test@test.com and password: test123
+2. delete the token from localStorage manually
+3. refresh the page
+
+actual: user is navigated to /posts in url but home page is loaded
+expected: user should get navigated to / home page and url also should be /

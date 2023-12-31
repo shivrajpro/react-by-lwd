@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { connect, useDispatch } from "react-redux";
-import { signUpAction, toggleLoadingAction } from "../../store/actions/AuthActions";
 import Loader from "../../components/Loader/Loader";
+import { signUpAction, toggleLoadingAction } from "../../store/actions/AuthActions";
 
 function SignUp(props) {
-    console.log('SignUp', props);
+    // console.log('SignUp', props);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     let initErrors = { email: '', password: '' };

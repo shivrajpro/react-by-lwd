@@ -4,3 +4,7 @@ render method gets called everytime the state gets updated
 
 concepts to revisit:
 forward refs with HOC
+
+npm run build
+npm i -g serve
+serve -s build

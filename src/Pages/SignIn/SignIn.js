@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { connect, useDispatch } from "react-redux";
-import { signInAction, toggleLoadingAction } from "../../store/actions/AuthActions";
 import Loader from "../../components/Loader/Loader";
+import { signInAction, toggleLoadingAction } from "../../store/actions/AuthActions";
 
 function SignIn(props) {
     // console.log('SignIn', props);
