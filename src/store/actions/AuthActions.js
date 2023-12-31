@@ -59,7 +59,7 @@ export function signInAction(email, password, history) {
             saveTokenInLocalStorage(response.data);
             runLogoutTimer(dispatch, response.data.expiresIn, history);
             dispatch(signInSuccess(response.data));
-            history.push('/');
+            history.push('/posts');
         })
         .catch(e=>{
             const errorResponse = e.response.data;

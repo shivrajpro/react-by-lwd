@@ -4,7 +4,7 @@ import { connect, useDispatch } from "react-redux";
 import { editPostAction } from "../../store/actions/PostActions";
 
 function EditPost(props) {
-    console.log('EditPost',props.post);
+    // console.log('EditPost',props.post);
     const [post, setPost] = useState(props.post);
     const dispatch = useDispatch();
 

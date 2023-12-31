@@ -43,11 +43,12 @@ export function deleteTokenFromLocalStorage() {
     localStorage.removeItem('userDetails');
 }
 
-export function runLogoutTimer(dispatch, expirationTime) {
+export function runLogoutTimer(dispatch, expirationTime, history) {
     // expirationTime is in seconds
     setTimeout(() => {
         console.log('runLogoutTimer');
         dispatch(logoutAction());
+        history.push('/sign-in')
     }, expirationTime * 1000);
 }
 

@@ -17,7 +17,7 @@ function Header(props) {
         <div className="bg-red-500 text-white p-2 text-white flex items-center justify-between" >
             <h2 className="font-bold text-lg" >React Router</h2>
             <div className="" >
-                <Link to='' className="px-2" >Home</Link>
+                <Link to='/' className="px-2" >Home</Link>
                 {!props.isAuth &&
                     <>
                         <Link to='/sign-up' className="px-2" >SignUp</Link>

@@ -4,7 +4,7 @@ import { signInAction, toggleLoadingAction } from "../../store/actions/AuthActio
 import Loader from "../../components/Loader/Loader";
 
 function SignIn(props) {
-    console.log('SignIn', props);
+    // console.log('SignIn', props);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
