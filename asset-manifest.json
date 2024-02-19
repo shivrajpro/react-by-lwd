@@ -1,0 +1,36 @@
+{
+  "files": {
+    "CreatePost.js": "/react-by-lwd/static/js/CreatePost.d6ed2115.chunk.js",
+    "CreatePost.js.map": "/react-by-lwd/static/js/CreatePost.d6ed2115.chunk.js.map",
+    "Home.js": "/react-by-lwd/static/js/Home.c7799690.chunk.js",
+    "Home.js.map": "/react-by-lwd/static/js/Home.c7799690.chunk.js.map",
+    "Posts.js": "/react-by-lwd/static/js/Posts.f2bc6abe.chunk.js",
+    "Posts.js.map": "/react-by-lwd/static/js/Posts.f2bc6abe.chunk.js.map",
+    "SignIn.css": "/react-by-lwd/static/css/SignIn.80bc9d3f.chunk.css",
+    "SignIn.js": "/react-by-lwd/static/js/SignIn.c68855cb.chunk.js",
+    "SignIn.js.map": "/react-by-lwd/static/js/SignIn.c68855cb.chunk.js.map",
+    "SignUp.css": "/react-by-lwd/static/css/SignUp.80bc9d3f.chunk.css",
+    "SignUp.js": "/react-by-lwd/static/js/SignUp.3310775d.chunk.js",
+    "SignUp.js.map": "/react-by-lwd/static/js/SignUp.3310775d.chunk.js.map",
+    "main.css": "/react-by-lwd/static/css/main.70e03791.chunk.css",
+    "main.js": "/react-by-lwd/static/js/main.78de7880.chunk.js",
+    "main.js.map": "/react-by-lwd/static/js/main.78de7880.chunk.js.map",
+    "runtime-main.js": "/react-by-lwd/static/js/runtime-main.7cd6f8a0.js",
+    "runtime-main.js.map": "/react-by-lwd/static/js/runtime-main.7cd6f8a0.js.map",
+    "static/js/7.d1057a4a.chunk.js": "/react-by-lwd/static/js/7.d1057a4a.chunk.js",
+    "static/js/7.d1057a4a.chunk.js.map": "/react-by-lwd/static/js/7.d1057a4a.chunk.js.map",
+    "static/js/8.2159de30.chunk.js": "/react-by-lwd/static/js/8.2159de30.chunk.js",
+    "static/js/8.2159de30.chunk.js.map": "/react-by-lwd/static/js/8.2159de30.chunk.js.map",
+    "index.html": "/react-by-lwd/index.html",
+    "static/css/SignIn.80bc9d3f.chunk.css.map": "/react-by-lwd/static/css/SignIn.80bc9d3f.chunk.css.map",
+    "static/css/SignUp.80bc9d3f.chunk.css.map": "/react-by-lwd/static/css/SignUp.80bc9d3f.chunk.css.map",
+    "static/css/main.70e03791.chunk.css.map": "/react-by-lwd/static/css/main.70e03791.chunk.css.map",
+    "static/js/7.d1057a4a.chunk.js.LICENSE.txt": "/react-by-lwd/static/js/7.d1057a4a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7cd6f8a0.js",
+    "static/js/7.d1057a4a.chunk.js",
+    "static/css/main.70e03791.chunk.css",
+    "static/js/main.78de7880.chunk.js"
+  ]
+}

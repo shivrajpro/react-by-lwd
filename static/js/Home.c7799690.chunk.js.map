@@ -1,0 +1,1 @@
+{"version":3,"sources":["Pages/Home/Home.js"],"names":["Home","className"],"mappings":"iKAAe,SAASA,IACpB,OACI,qBAAKC,UAAU,MAAf,SACI","file":"static/js/Home.c7799690.chunk.js","sourcesContent":["export default function Home() {\r\n    return (\r\n        <div className=\"p-2\">\r\n            <p>home works!</p>\r\n        </div>\r\n    )\r\n}"],"sourceRoot":""}
