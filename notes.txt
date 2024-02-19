@@ -1,0 +1,9 @@
+steps to host on github pages
+    npm i gh-pages --save-dev
+    homepage key in package json with repo url
+    predeploy, deploy
+    npm run deploy. creates a gh-pages branch on our repo
+    go to github repo in browser
+    WAIT FOR 5 MINUTES ATLEAST FOR THE SITE TO GO LIVE
+    settings-> pages
+    
